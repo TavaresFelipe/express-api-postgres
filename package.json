@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Example express RESTFUL api and postgress",
   "main": "app.js",
+  "start": "app.js",
   "dependencies": {
       "express": "~4.13.3",
       "pg-promise": "~5.2.7",
