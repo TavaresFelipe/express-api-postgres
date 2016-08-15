@@ -5,6 +5,11 @@ var express = require('express'),
 
 app.use(bodyParser.json())
 
+app.get('/', function(req, res) {
+
+       res.send("hello world from heroku");		
+});
+
 app.get('/contacts', function(req, res) {
 
        var pgp = require("pg-promise")(/*options*/);
