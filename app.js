@@ -1,22 +1,20 @@
-var express = require('express'),
-    app = express(),
-	bodyParser = require('body-parser');
-   
+var http = require('http');
 
-app.use(bodyParser.json())
+http.createServer(function (q, r) { 
 
-app.get('/', function(req, res) {
+  // control for favicon
 
-       res.send("hello world from heroku");		
-});
+  if (q.url === '/favicon.ico') {
+    r.writeHead(200, {'Content-Type': 'image/x-icon'} );
+    r.end();
+    console.log('favicon requested');
+    return;
+  }
 
-
-	
-app.use(function(req, res){
-    res.sendStatus(404);
-});
-
-   var server = app.listen(80, function() {
-       var port = server.address().port;
-       console.log("Express server listening on port %s.", port);
-});
+  // not the favicon? say hai
+  console.log('hello');
+  r.writeHead(200, {'Content-Type': 'text/plain'} );
+  r.write('Hello, world!');
+  r.end();
+  
+}).listen(8000);
